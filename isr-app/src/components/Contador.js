@@ -10,6 +10,8 @@ const Contador = () => {
     return (
         <Fragment>
             <h3>Pruebita Componente :V {numerito}</h3>
+            <h4>frio o calor?</h4>
+            <h4>{numerito > 13 ? 'Calor' : 'Frio'}</h4>
             <button onClick={aumentar}> Aumentar Numerito</button>
         </Fragment>
     );

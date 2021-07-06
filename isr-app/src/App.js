@@ -1,13 +1,17 @@
 import Contador from "./components/Contador";
 import Lista from "./components/lista";
+import {Formulario} from "./components/formulario";
+
 function App() {
     return (
-        <div>
+        <div className={"container"}>
             <h1>REACT XD</h1>
-            <Contador>
-            </Contador>
-            <Lista>
-            </Lista>
+            <Formulario>
+            </Formulario>
+            {/*<Contador>*/}
+            {/*</Contador>*/}
+            {/*<Lista>*/}
+            {/*</Lista>*/}
         </div>
     );
 }

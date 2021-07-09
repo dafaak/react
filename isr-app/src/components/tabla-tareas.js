@@ -1,8 +1,10 @@
 import React, {Fragment, useState} from "react";
 import {useForm} from "react-hook-form";
+import {v4 as uuidv4} from 'uuid';
 
 export const TablaTareas = (props) => {
-    const [tareas, setTareas] = useState(props.tareas);
+    const [tareas, setTareas] = useState(props.tareas ? props.tareas : []);
+    const [tarea, setTarea] = useState({});
     let [mostrarForm, setMostrarForm] = useState(false);
     const {register, handleSubmit, formState: {errors}} = useForm();
     const cambiarMostrarForm = () => {
@@ -19,9 +21,18 @@ export const TablaTareas = (props) => {
         )
 
     }
-    const onSubmit = (data) => {
+    const eliminarTarea = (id) => {
+        //const indiceEliminar = tareas.findIndex(tarea);
+        const arrayFiltrado = tareas.filter(item => item.id !== id)
+        // const arrayFiltrado = tareas.splice(index, 1);
+         setTareas(arrayFiltrado);
+        // console.log(id, tareas);
+    }
+    const onSubmit = (data, e) => {
+        data.id = uuidv4();
         agregarTarea(data);
         cambiarMostrarForm();
+        e.target.reset();
     }
     return (
         <Fragment>
@@ -32,6 +43,7 @@ export const TablaTareas = (props) => {
                     <th scope="col">#</th>
                     <th scope="col">Tarea</th>
                     <th scope="col">Estado</th>
+                    <th scope="col">Performe</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -40,12 +52,18 @@ export const TablaTareas = (props) => {
                         <td>{index}</td>
                         <td>{item.nombre}</td>
                         <td>{item.estado}</td>
+                        <td>
+                            <button className={'btn btn-block btn-primary'} onClick={()=>eliminarTarea(item.id)}>
+                                ELIMINAR
+                            </button>
+                        </td>
                     </tr>
                 )}
 
                 </tbody>
             </table>
-            <button className={'btn btn-block btn-outline-dark mb-1'} hidden={mostrarForm} onClick={cambiarMostrarForm}>
+            <button className={'btn btn-block btn-outline-dark mb-1'} hidden={mostrarForm}
+                    onClick={cambiarMostrarForm}>
                 AGREGAR
             </button>
             <div hidden={!mostrarForm} className={'mb-2'}>

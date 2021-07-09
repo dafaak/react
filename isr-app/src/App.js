@@ -1,9 +1,10 @@
 import {Fragment, useState} from "react";
 import React from 'react';
 import {TablaTareas} from "./components/tabla-tareas";
+import {v4 as uuidv4} from 'uuid';
 
 function App() {
-    const tareas = [{nombre: 'jugar', estado: 'doing'}]
+    const tareas = [{nombre: 'jugar', estado: 'doing', id: uuidv4()}]
     return (
         <Fragment>
             <div className={'container'}>

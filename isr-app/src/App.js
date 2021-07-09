@@ -1,12 +1,17 @@
-import Contador from "./components/Contador";
+import {Fragment, useState} from "react";
+import React from 'react';
+import {TablaTareas} from "./components/tabla-tareas";
 
 function App() {
+    const tareas = [{nombre: 'jugar', estado: 'doing'}]
     return (
-        <div>
-            <h1>REACT XD</h1>
-            <Contador>
-            </Contador>
-        </div>
+        <Fragment>
+            <div className={'container'}>
+                <h1>CRUD con HOOKS</h1>
+                <hr/>
+                <TablaTareas tareas={tareas}/>
+            </div>
+        </Fragment>
     );
 }
 

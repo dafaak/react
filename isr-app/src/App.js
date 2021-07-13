@@ -8,7 +8,8 @@ import {
 } from "react-router-dom";
 import {Personajes} from "./components/personajes";
 import {Pueblos} from "./components/pueblos";
-import {Inicio} from "./components/inicio";
+import {Juegos} from "./components/juegos";
+import {Juego} from "./components/juego";
 
 function App() {
     return (
@@ -16,28 +17,25 @@ function App() {
             <div className={'container mt-5'}>
                 <div className={'btn-group'}>
                     <NavLink to={'/'} className={'btn btn-dark active'} activeClassName={'active'}>
-                        Inicio
+                        Juegos
                     </NavLink>
                     <Link to={'/pueblos'} className={'btn btn-dark'}>
                         Pueblos
                     </Link>
-                    <Link to={'/personajes'} className={'btn btn-dark'}>
-                        Personajes
-                    </Link>
                 </div>
                 <hr/>
                 <Switch>
-                    <Route path={'/personajes'}>
-                        <Personajes>
-                        </Personajes>
+                    <Route path={'/juego/:id'}>
+                        <Juego>
+                        </Juego>
                     </Route>
                     <Route path={'/pueblos'}>
                         <Pueblos>
                         </Pueblos>
                     </Route>
                     <Route path={'/'}>
-                        <Inicio>
-                        </Inicio>
+                        <Juegos>
+                        </Juegos>
                     </Route>
                 </Switch>
             </div>

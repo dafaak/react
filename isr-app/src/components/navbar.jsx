@@ -12,47 +12,73 @@ const Navbar = (props) => {
     }
 
     return (
-        <div className="navbar navbar-dark bg-dark">
-            <Link to="/" className="navbar-brand">React Admin</Link>
-            <div>
-                <div className="d-flex">
-                    <NavLink
-                        className="btn btn-dark mr-2"
-                        to="/"
-                        exact
-                    >
-                        Inicio
-                    </NavLink>
-                    {
-                        props.firebaseUser !== null ? (
+
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid">
+                <Link  className="navbar-brand" to="/">Navbar</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
                             <NavLink
-                                className="btn btn-dark mr-2"
-                                to="/admin"
+                                className={'btn btn-block'}
+                                to="/"
+                                exact
                             >
-                                Admin
+                                Inicio
                             </NavLink>
-                        ) : null
-                    }
-                    {
-                        props.firebaseUser !== null ? (
-                            <button
-                                className="btn btn-dark"
-                                onClick={() => cerrarSesion()}
-                            >
-                                Cerrar Sesión
-                            </button>
-                        ) : (
-                            <NavLink
-                                className="btn btn-dark"
-                                to="/login"
-                            >
-                                Sign in/up
-                            </NavLink>
-                        )
-                    }
+                        </li>
+                        <li className="nav-item">
+                            {
+                                props.firebaseUser !== null ? (
+                                    <NavLink
+                                        className={'btn btn-block'}
+                                        to="/admin"
+                                    >
+                                        Admin
+                                    </NavLink>
+                                ) : null
+                            }
+                        </li>
+                        <li className="nav-item">
+
+                            {
+                                props.firebaseUser !== null ? (
+                                    <NavLink
+                                        className={'btn btn-block'}
+                                        to="/examenes"
+                                    >
+                                        Exámenes
+                                    </NavLink>
+                                ) : null
+                            }
+                        </li>
+                        <li className={'nav-item'}>
+                            {
+                                props.firebaseUser !== null ? (
+                                    <button className={'btn btn-block'}
+                                        onClick={() => cerrarSesion()}
+                                    >
+                                        Cerrar Sesión
+                                    </button>
+                                ) : (
+                                    <NavLink
+                                        className={'btn btn-block'}
+                                        to="/login"
+                                    >
+                                        Sign in/up
+                                    </NavLink>
+                                )
+                            }
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
+        </nav>
     )
 }
 

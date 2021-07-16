@@ -103,51 +103,58 @@ const Login = (props) => {
     }, [email, pass, props.history])
 
     return (
-        <div className="mt-5">
-            <h3 className="text-center">
-                {
-                    esRegistro ? 'Registro' : 'Login'
-                }
-            </h3>
-            <hr/>
-            <div className="row justify-content-center">
-                <div className="col-12 col-sm-8 col-md-6 col-xl-4">
-                    <form onSubmit={procesarDatos}>
-                        {
-                            error ? (
-                                <div className="alert alert-danger">
-                                    {error}
-                                </div>
-                            ) : null
-                        }
-                        <input
-                            type="email"
-                            className="form-control mb-2"
-                            placeholder="Ingrese Email"
-                            onChange={e => setEmail(e.target.value)}
-                            value={email}
-                        />
-                        <input
-                            type="password"
-                            className="form-control mb-2"
-                            placeholder="Ingrese Contraseña"
-                            onChange={e => setPass(e.target.value)}
-                            value={pass}
-                        />
-                        <button
-                            className="btn btn-lg btn-dark btn-block"
-                            type="submit"
-                        >
-                            {esRegistro ? 'Registrar' : 'Acceder'}
-                        </button>
-                        <button
-                            className="btn btn-sm btn-info btn-block"
-                            type="button"
-                            onClick={() => setEsRegistro(!esRegistro)}
-                        >
-                            {esRegistro ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?'}
-                        </button>
-                    </form>
+        <div className="container">
+            <div className="mt-5">
+                <h3 className="text-center">
+                    {
+                        esRegistro ? 'Registro' : 'Login'
+                    }
+                </h3>
+                <hr/>
+                <div className="row justify-content-center">
+                    <div className="col-12 col-sm-8 col-md-6 col-xl-4">
+                        <form onSubmit={procesarDatos}>
+                            {
+                                error ? (
+                                    <div className="alert alert-danger">
+                                        {error}
+                                    </div>
+                                ) : null
+                            }
+                            <input
+                                type="email"
+                                className="form-control mb-2"
+                                placeholder="Ingrese Email"
+                                onChange={e => setEmail(e.target.value)}
+                                value={email}
+                            />
+                            <input
+                                type="password"
+                                className="form-control mb-2"
+                                placeholder="Ingrese Contraseña"
+                                onChange={e => setPass(e.target.value)}
+                                value={pass}
+                            />
+                            <div className="row">
+                                <button
+                                    className="btn btn-lg btn-dark btn-block"
+                                    type="submit"
+                                >
+                                    {esRegistro ? 'Registrar' : 'Acceder'}
+                                </button>
+                            </div>
+                            <div className="row mt-2">
+                                <button
+                                    className="btn btn-sm  btn-block  btn-secondary"
+                                    type="button"
+                                    onClick={() => setEsRegistro(!esRegistro)}
+                                >
+                                    {esRegistro ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?'}
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
